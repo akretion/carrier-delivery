@@ -1,9 +1,8 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from datetime import datetime
+from datetime import date, datetime
 
 from odoo import models
-from odoo.tools import DEFAULT_SERVER_DATE_FORMAT as DATE_FORMAT
 
 
 class StockPicking(models.Model):
@@ -16,7 +15,7 @@ class StockPicking(models.Model):
         return vals
 
     def _chronopost__fr_get_shipping_date(self, package=None):
-        return datetime.now().strftime(DATE_FORMAT)
+        return date.today()
 
     def _chronopost_fr_get_service(self, account, package=None):
         vals = self._roulier_get_service(account, package=package)
