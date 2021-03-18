@@ -12,6 +12,8 @@ class GlsLabelCase(VCRMixin, carrier_label_case.CarrierLabelCase):
         self.picking.company_id.partner_id.write(
             {"country_id": self.env.ref("base.fr").id}
         )
+        account = self.env.ref("delivery_roulier_gls_fr.carrier_account_gls")
+        account.write({"account": "2547895478"})
 
     def _get_vcr_kwargs(self, **kwargs):
         return {

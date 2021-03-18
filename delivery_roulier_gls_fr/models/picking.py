@@ -4,9 +4,7 @@
 import logging
 from datetime import date
 
-from roulier.exception import CarrierError
-
-from odoo import _, api, fields, models
+from odoo import fields, models
 from odoo.exceptions import UserError
 
 _logger = logging.getLogger(__name__)
@@ -35,7 +33,7 @@ class StockPicking(models.Model):
 
     carrier_tracking_ref = fields.Char(copy=False)
 
-    def _gls_fr_get_to_address(self, package=None):
+    def _gls_fr_glsbox_get_to_address(self, package=None):
         address = self._roulier_get_to_address(package=package)
         # TODO improve depending refactoring _roulier_convert_address()
         # specially keys: street2, company, phone, mobile
@@ -56,9 +54,9 @@ class StockPicking(models.Model):
         address["mobile"] = self.partner_id.mobile or self.partner_id.phone
         return address
 
-    def _gls_fr_get_service(self, account, package=None):
+    def _gls_fr_glsbox_get_service(self, account, package=None):
         self.ensure_one()
-        packages = self._get_packages_from_picking()
+        packages = self.package_ids
         gls_keys = ["carrier_gls_agency_id", "carrier_gls_customer_id"]
         config = {
             x.key: x.value

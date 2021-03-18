@@ -17,7 +17,7 @@ class StockQuantPackage(models.Model):
 
     carrier_id = fields.Many2one("delivery.carrier")
 
-    def _gls_fr_get_tracking_link(self):
+    def _gls_fr_glsbox_get_tracking_link(self):
         self.ensure_one()
         return URL_TRACKING % self.parcel_tracking
 
@@ -32,15 +32,15 @@ class StockQuantPackage(models.Model):
 
     # maybe we could implement this number stuff directly in roulier since we send
     # all packages at once.
-    def _gls_fr_get_parcels(self, picking):
+    def _gls_fr_glsbox_get_parcels(self, picking):
         res = []
         num = 0
         for pack in self:
             num += 1
-            res.append(pack._gls_fr_get_parcel(picking, num))
+            res.append(pack._gls_fr_glsbox_get_parcel(picking, num))
         return res
 
-    def _gls_fr_get_parcel(self, picking, number):
+    def _gls_fr_glsbox_get_parcel(self, picking, number):
         return {
             "parcel_number_label": number,
             "parcel_number_barcode": number,

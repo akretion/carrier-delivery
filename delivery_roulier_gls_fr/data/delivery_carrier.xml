@@ -17,7 +17,7 @@
     <!-- DELIVERY CARRIER -->
     <record id="delivery_carrier_gls" model="delivery.carrier">
         <field name="name">GLS group</field>
-        <field name="delivery_type">gls_fr</field>
+        <field name="delivery_type">gls_fr_glsbox</field>
         <field name="code">gls</field>
         <field name="prod_environment" eval="False" />
         <field name="debug_logging" eval="True" />
@@ -28,7 +28,7 @@
     <!-- CARRIER ACCOUNT -->
     <record id="carrier_account_gls" model="carrier.account">
         <field name="name">gls</field>
-        <field name="delivery_type">gls_fr</field>
+        <field name="delivery_type">gls_fr_glsbox</field>
         <field name="account">your account number here</field>
         <field name="password">password</field>
     </record>
@@ -36,11 +36,11 @@
     <!-- CONFIG PARAMETER -->
     <record id="delivery_carrier_gls_customer_id" model="ir.config_parameter">
         <field name="key">carrier_gls_customer_id</field>
-        <field name="value">2500099999</field>
+        <field name="value">2505400034</field>
     </record>
     <record id="delivery_carrier_gls_agency_id" model="ir.config_parameter">
         <field name="key">carrier_gls_agency_id</field>
-        <field name="value">FR0099</field>
+        <field name="value">FR0094</field>
     </record>
 
 </odoo>

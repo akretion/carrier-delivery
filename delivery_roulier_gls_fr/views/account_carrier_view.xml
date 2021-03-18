@@ -14,7 +14,7 @@
                     name="complete_gls_settings"
                     string="Complete GLS shared settings"
                     class="oe_button fa_truck"
-                    attrs="{'invisible': [('delivery_type', '!=', 'gls_fr')]}"
+                    attrs="{'invisible': [('delivery_type', '!=', 'gls_fr_glsbox')]}"
                 />
     </xpath>
   </field>
